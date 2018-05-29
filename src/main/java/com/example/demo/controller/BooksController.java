@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import com.example.demo.model.Book;
 import com.example.demo.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +13,16 @@ import java.util.List;
 @RestController
 public class BooksController {
 
+	@Autowired
+	BookService service;
 
-    @Autowired
-    BookService service;
+	@PostMapping(value = "/book/save")
+	public String saveNewBook(@RequestBody Book book) {
+		return service.saveNewBook(book);
+	}
 
-    @PostMapping(value = "/book/save")
-    public String saveNewBook(@RequestBody Book book) {
-        return service.saveNewBook(book);
-    }
-
-    @GetMapping(value = "/books/")
-    public List<Book> list() {
-        return service.getList();
-    }
+	@GetMapping(value = "/books/")
+	public List<Book> list() {
+		return service.getList();
+	}
 }
