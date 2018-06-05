@@ -23,6 +23,6 @@ public class BooksController {
 
 	@GetMapping(value = "/books/")
 	public List<Book> list() {
-		return service.getList();
+		return service.books();
 	}
 }
